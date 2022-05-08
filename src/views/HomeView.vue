@@ -1,10 +1,9 @@
 <script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
-import TheHeader from '@/layouts/TheHeader.vue'
+import FeaturedProducts from "@/layouts/FeaturedProducts/FeaturedProducts.vue";
+import LatestProducts from "@/layouts/LatestProducts/LatestProducts.vue";
 </script>
 
 <template>
-  <main>
-    <TheHeader />
-  </main>
+  <FeaturedProducts />
+  <LatestProducts />
 </template>
