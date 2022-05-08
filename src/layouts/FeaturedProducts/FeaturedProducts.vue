@@ -46,9 +46,9 @@ onMounted(async () => {
 						},
 					}"
 				>
-					<swiperSlide v-for="product in products" key="product.id">
+					<SwiperSlide v-for="product in products" key="product.id">
 						<ProductCard :product="product" />
-					</swiperSlide>
+					</SwiperSlide>
 
 					<VSpinner v-if="isLoading" />
 					<div class="featured-swiper-pagination"></div>
