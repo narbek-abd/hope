@@ -27,17 +27,13 @@ const props = defineProps({
 	disabled: Boolean,
 	isLoading: Boolean,
 });
-
-const btnStatusClass = computed(() => ({
-	"btn--disabled": props.disabled || props.isLoading,
-	"btn--loading": props.isLoading,
-}));
 </script>
 
 <template>
 	<button
 		class="btn"
-		:class="[btnStatusClass, `btn--${color}`, `btn--${variant}`]"
+		:class="[`btn--${color}`, `btn--${variant}`, `btn--${size}`]"
+		:disabled="props.disabled || props.isLoading"
 	>
 		<template v-if="isLoading">
 			<span><slot></slot></span>
@@ -66,19 +62,17 @@ const btnStatusClass = computed(() => ({
 	position: relative;
 }
 
-.btn--disabed {
+.btn:disabled {
 	opacity: 0.8;
+
+	span {
+		opacity: 0;
+	}
 }
 
 .btn--small {
 	font-size: 15px;
 	padding: 6px 12px;
-}
-
-.btn--loading {
-	span {
-		opacity: 0;
-	}
 }
 
 .btn--contained.btn--pink {
