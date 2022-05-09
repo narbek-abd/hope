@@ -4,13 +4,19 @@ import { RouterLink } from "vue-router";
 import VIcon from "@/components/VIcon.vue";
 import VButton from "@/components/VButton.vue";
 import { apiUrl } from "@/constants/main.js";
+import {useCartStore} from "@/stores/cart"
 
 const props = defineProps(["product"]);
 
 const alreadyInCart = ref(false);
 const alreadyInWishlist = ref(false);
 
-function addToCart() {}
+const cartStore = useCartStore();
+
+function addToCart() {
+	cartStore.addProduct(props.product.id)
+	alreadyInCart.value = true;
+}
 
 function addToWishlist() {}
 </script>

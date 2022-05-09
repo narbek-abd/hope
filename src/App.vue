@@ -264,4 +264,20 @@ textarea::-moz-placeholder {
   color: #1a0b5b;
   text-align: center;
 }
+
+.input {
+  width: 100%;
+  border: 1px solid #c2c5e1;
+  box-sizing: border-box;
+  border-radius: 2px;
+  color: #9096b2;
+  padding: 15px 13px;
+}
+
+.form-error {
+  display: block;
+  margin-top: 3px;
+  color: var(--color-pink);
+  font-size: 12px;
+}
 </style>

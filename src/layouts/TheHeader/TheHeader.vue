@@ -3,6 +3,7 @@ import VIcon from "@/components/VIcon.vue";
 import HeaderNavbar from "./HeaderNavbar.vue";
 import HeaderTop from "./HeaderTop.vue";
 import HeaderSearchbar from "./HeaderSearchbar.vue";
+import {RouterLink} from "vue-router" 
 </script>
 
 <template>
@@ -12,9 +13,9 @@ import HeaderSearchbar from "./HeaderSearchbar.vue";
     <div class="header__bottom">
       <div class="container">
         <div class="header__bottom-inner">
-          <div class="logo">
+          <RouterLink class="logo" to="/">
             <VIcon name="logo" />
-          </div>
+          </RouterLink>
 
           <div class="header__right">
             <HeaderNavbar />

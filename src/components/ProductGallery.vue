@@ -15,7 +15,6 @@ const props = defineProps({
 });
 const mainImg = ref(props.imageItems[0]);
 
-console.log(props.imageItems);
 function changeMainImg(id) {
 	let selectedImg = props.imageItems.find((image) => image.id === id);
 

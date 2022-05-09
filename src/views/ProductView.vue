@@ -4,7 +4,7 @@ import { useRoute } from "vue-router";
 import api from "@/api";
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
 import VSpinner from "@/components/VSpinner.vue";
-import TheProduct from "@/layouts/TheProduct/TheProduct.vue";
+import TheProduct from "@/layouts/TheProduct.vue";
 
 const isLoading = ref(true);
 const product = ref(null);
