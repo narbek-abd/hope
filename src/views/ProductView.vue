@@ -5,15 +5,15 @@ import api from "@/api";
 import BreadCrumbs from "@/components/BreadCrumbs.vue";
 import VSpinner from "@/components/VSpinner.vue";
 import TheProduct from "@/layouts/TheProduct.vue";
+import TheComments from "@/layouts/TheComments/TheComments.vue";
 
 const isLoading = ref(true);
 const product = ref(null);
 
 const route = useRoute();
-const productId = route.params.id;
 
 watchEffect(async () => {
-  let response = await api.products.getProduct(productId);
+  let response = await api.products.getProduct(route.params.id);
 
   isLoading.value = false;
   product.value = response.data;
@@ -57,5 +57,5 @@ watchEffect(() => {
 
   <VSpinner v-if="isLoading" />
   <TheProduct v-if="product" :product="product" />
-  <!-- <TheComments v-if="product" :product-id="product.id" /> -->
+  <TheComments v-if="product" :product-id="product.id" />
 </template>

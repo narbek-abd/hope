@@ -16,7 +16,7 @@ const router = useRouter();
 
 const currentPath = computed(() => route.path.replace(/\/$/, ""));
 
-const queryCategoryList = computed(() => route.query.categories.split('-'));
+const queryCategoryList = computed(() => route.query?.categories?.split('-') || []);
 
 const filterForm = ref({
 	price_from: "",
