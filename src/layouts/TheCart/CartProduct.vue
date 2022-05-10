@@ -29,7 +29,6 @@ function onCountChange(count) {
 function removeProduct() {
 	cartStore.removeProduct(props.product.id);
 }
-console.log(localProduct)
 </script>
 
 <template>
