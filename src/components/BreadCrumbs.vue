@@ -12,11 +12,10 @@ const props = defineProps({
 const route = useRoute();
 
 const initialRoutes = [{ name: "Home", url: "/" }];
-const breadCrumbs = ref(initialRoutes.concat(props.customRoutes));
 
 /** if the routes are not passed, generate by location*/
-watchEffect(() => {
-	if (props.customRoutes.length > 0) return;
+const genratedRoutes = computed(() => {
+	if (props.customRoutes.length > 0) return [];
 
 	let locationRoutes = [];
 	const currentRoutes = route.path.split("/");
@@ -30,15 +29,19 @@ watchEffect(() => {
 		locationRoutes.push({ name: name, url: route });
 	});
 
-	breadCrumbs.value = breadCrumbs.value.concat(locationRoutes);
+	return locationRoutes;
 });
 
-const breadCrumbList = computed(() => {
+let breadCrumbs = computed(() => {
+	let breadCrumbList = initialRoutes
+		.concat(props.customRoutes)
+		.concat(genratedRoutes.value);
+
 	let list = [];
 	let currentUrl = "";
 
-	breadCrumbs.value.forEach((breadCrumb, index) => {
-		let isLastRoute = index === breadCrumbs.value.length - 1;
+	breadCrumbList.forEach((breadCrumb, index) => {
+		let isLastRoute = index === breadCrumbList.length - 1;
 
 		if (breadCrumb.url !== "/") {
 			currentUrl = currentUrl + "/" + breadCrumb.url;
@@ -56,7 +59,7 @@ const breadCrumbList = computed(() => {
 <template>
 	<div class="breadcrumbs">
 		<ul>
-			<li v-for="breadCrumb in breadCrumbList" class="breadcrumbs__item">
+			<li v-for="breadCrumb in breadCrumbs" class="breadcrumbs__item">
 				<span
 					v-if="breadCrumb.isLastRoute"
 					class="breadcrumbs__link breadcrumbs__link--active"

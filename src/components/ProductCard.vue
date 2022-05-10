@@ -36,7 +36,7 @@ function addToWishlist() {}
 				<p class="product-card__name">{{ product.name }}</p>
 				<div class="product-card__prices">
 					<div class="product-card__price">{{ product.price }}</div>
-					<div class="product-card__price">65$</div>
+					<div class="product-card__price product-card__price--old">65$</div>
 				</div>
 			</div>
 		</RouterLink>
@@ -108,7 +108,7 @@ function addToWishlist() {}
 	text-align: center;
 	margin-top: 15px;
 }
-.product-card__price {
+.product-card__price--old {
 	font-size: 14px;
 
 	font-size: 12px;
