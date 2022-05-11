@@ -14,6 +14,15 @@ import TheFooter from "@/layouts/TheFooter.vue";
 </template>
 
 <style lang="scss">
+  :root {
+  --color-purple: #7e33e0;
+  --color-pink: #fb2e86;
+  --color-dark-blue: #151875;
+
+  --color-tr: color 0.1s ease-in;
+  --opacity-tr: opacity 0.2s ease-in;
+}
+
 * {
   margin: 0;
   border: 0;
