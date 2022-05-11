@@ -121,20 +121,7 @@ const onSubmit = () => {
 	margin-right: 44px;
 
 	@media only screen and (max-width: 992px) {
-		text-align: left;
-		padding: 20px;
-		.catalog-products__filter-price {
-			justify-content: flex-start;
-		}
-
-		.checkbox {
-			text-align: left;
-		}
-
-		.btn {
-			width: 100%;
-			padding: 15px 0;
-		}
+		display: none;
 	}
 }
 .catalog-products__filter-form {

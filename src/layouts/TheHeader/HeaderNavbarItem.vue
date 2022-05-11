@@ -41,7 +41,7 @@ let hasChildren = computed(() => {
 			</ul>
 		</div>
 
-		<RouterLink v-else to="#" class="navbar__link">
+		<RouterLink v-else :to="item.link" class="navbar__link">
 			{{ item.name }}
 		</RouterLink>
 	</li>

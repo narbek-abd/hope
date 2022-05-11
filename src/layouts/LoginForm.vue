@@ -58,7 +58,7 @@ const onSubmit = handleSubmit(async (data) => {
 				<label for="password">Password</label>
 				<input
 					v-model="password"
-					type="text"
+					type="password"
 					class="input"
 					id="password"
 				/>

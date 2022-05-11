@@ -17,14 +17,11 @@ function hideDropdown() {
 	isVisible.value = false;
 }
 
-function showDropdown() {
-	isVisible.value = true;
-}
 </script>
 
 <template>
 	<div class="dropdown" v-click-outside="hideDropdown">
-		<span class="dropdown__toggle" @click="showDropdown">
+		<span class="dropdown__toggle" @click="isVisible = !isVisible">
 			<slot name="title"></slot>
 		</span>
 

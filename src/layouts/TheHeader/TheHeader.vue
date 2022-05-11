@@ -4,6 +4,8 @@ import HeaderNavbar from "./HeaderNavbar.vue";
 import HeaderTop from "./HeaderTop.vue";
 import HeaderSearchbar from "./HeaderSearchbar.vue";
 import {RouterLink} from "vue-router" 
+import BottomNavbar from "@/components/BottomNavbar.vue";
+
 </script>
 
 <template>
@@ -24,6 +26,8 @@ import {RouterLink} from "vue-router"
         </div>
       </div>
     </div>
+
+      <BottomNavbar />
   </header>
 </template>
 
