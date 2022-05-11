@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 import { RouterLink } from "vue-router";
 import VIcon from "@/components/VIcon.vue";
 import VButton from "@/components/VButton.vue";
@@ -14,6 +14,18 @@ const alreadyInWishlist = ref(false);
 
 const cartStore = useCartStore();
 const wishListStore = useWishListStore();
+
+watchEffect(() => {
+	if (cartStore.products.find(cartProduct => cartProduct.id === props.product.id)) {
+		alreadyInCart.value = true;
+	}
+});
+
+watchEffect(() => {
+	if (wishListStore.products.find(wishListProduct => wishListProduct.id === props.product.id)) {
+		alreadyInWishlist.value = true;
+	}
+});
 
 function addToCart() {
 	cartStore.addProduct(props.product.id)
