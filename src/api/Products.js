@@ -7,7 +7,7 @@ const Products = {
 	createProduct: (formData) => axiosClient.post("/products", formData),
 
 	updateProduct: (id, formData) => {
-		// we cant send images like formdata using the axios.PUT method, so we specify method manually and send using POST
+		// we can't send images like formdata using the axios.PUT method, so we specify method manually and send using POST
 		formData.append("_method", "PUT");
 		return axiosClient.post(`/products/${id}`, formData);
 	},

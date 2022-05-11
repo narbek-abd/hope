@@ -1,5 +1,5 @@
 <script setup>
-	import {computed} from "vue"
+import { computed } from "vue";
 import VSpinner from "@/components/VSpinner.vue";
 
 const props = defineProps({
@@ -14,30 +14,26 @@ const props = defineProps({
 		validator(value) {
 			return ["small", "large"].includes(value);
 		},
-		default: "small",
+		default: "large",
 	},
 
 	color: {
 		validator(value) {
 			return ["pink", "danger", "warning", "blue"].includes(value);
 		},
-		default: "small",
+		default: "pink",
 	},
 
 	disabled: Boolean,
 	isLoading: Boolean,
 });
-
-const btnStatusClass = computed(() => ({
-	"btn--disabled": props.disabled || props.isLoading,
-	"btn--loading": props.isLoading,
-}));
 </script>
 
 <template>
 	<button
 		class="btn"
-		:class="[btnStatusClass, `btn--${color}`, `btn--${variant}`]"
+		:class="[`btn--${color}`, `btn--${variant}`, `btn--${size}`]"
+		:disabled="props.disabled || props.isLoading"
 	>
 		<template v-if="isLoading">
 			<span><slot></slot></span>
@@ -66,8 +62,12 @@ const btnStatusClass = computed(() => ({
 	position: relative;
 }
 
-.btn--disabed {
+.btn:disabled {
 	opacity: 0.8;
+
+	span {
+		opacity: 0;
+	}
 }
 
 .btn--small {
@@ -75,25 +75,28 @@ const btnStatusClass = computed(() => ({
 	padding: 6px 12px;
 }
 
-.btn--loading {
-	span {
-		opacity: 0;
-	}
-}
-
-.btn--pink {
+.btn--contained.btn--pink {
 	background-color: var(--color-pink);
 }
 
-.btn--danger {
+.btn--contained.btn--danger {
 	background-color: #dc3545;
 }
 
-.btn--warning {
+.btn--contained.btn--warning {
 	background-color: #ffc107;
 }
 
-.btn--blue {
+.btn--contained.btn--blue {
 	background-color: var(--color-dark-blue);
+}
+
+.btn--outlined.btn--blue {
+	border: 2px solid var(--color-dark-blue);
+	color: var(--color-dark-blue);
+
+	.spinner {
+		border-top-color: #dc3545;
+	}
 }
 </style>

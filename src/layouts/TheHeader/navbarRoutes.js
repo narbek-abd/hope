@@ -17,12 +17,12 @@ export default [
 					{
 						id: 4,
 						name: "Wishlist",
-						link: "#",
+						link: "/user/wishlist",
 					},
 					{
 						id: 5,
 						name: "Cart",
-						link: "#",
+						link: "/cart",
 					},
 				],
 			},
@@ -33,11 +33,5 @@ export default [
 		id: 6,
 		name: "Products",
 		link: "/catalog",
-	},
-
-	{
-		id: 7,
-		name: "Admin",
-		link: "/admin",
 	},
 ];

@@ -4,15 +4,26 @@ import { RouterLink } from "vue-router";
 import VIcon from "@/components/VIcon.vue";
 import VButton from "@/components/VButton.vue";
 import { apiUrl } from "@/constants/main.js";
+import {useCartStore} from "@/stores/cart"
+import {useWishListStore} from "@/stores/wishList"
 
 const props = defineProps(["product"]);
 
 const alreadyInCart = ref(false);
 const alreadyInWishlist = ref(false);
 
-function addToCart() {}
+const cartStore = useCartStore();
+const wishListStore = useWishListStore();
 
-function addToWishlist() {}
+function addToCart() {
+	cartStore.addProduct(props.product.id)
+	alreadyInCart.value = true;
+}
+
+function addToWishlist() {
+	wishListStore.addProduct(props.product.id)
+	alreadyInWishlist.value = true;
+}
 </script>
 
 <template>
@@ -30,7 +41,7 @@ function addToWishlist() {}
 				<p class="product-card__name">{{ product.name }}</p>
 				<div class="product-card__prices">
 					<div class="product-card__price">{{ product.price }}</div>
-					<div class="product-card__price">65$</div>
+					<div class="product-card__price product-card__price--old">65$</div>
 				</div>
 			</div>
 		</RouterLink>
@@ -102,7 +113,7 @@ function addToWishlist() {}
 	text-align: center;
 	margin-top: 15px;
 }
-.product-card__price {
+.product-card__price--old {
 	font-size: 14px;
 
 	font-size: 12px;
