@@ -27,24 +27,36 @@ const router = createRouter({
       path: "/register",
       name: "register",
       component: () => import("../views/RegisterView.vue"),
-      beforeEnter: () => {
-        useUserStore().redirectAuthenticated();
-      },
     },
 
     {
       path: "/login",
       name: "login",
       component: () => import("../views/LoginView.vue"),
-      beforeEnter: () => {
-        useUserStore().redirectAuthenticated();
-      },
     },
 
     {
       path: "/cart",
       name: "cart",
       component: () => import("../views/CartView.vue"),
+    },
+
+     {
+      path: "/user/wishlist",
+      name: "wishlist",
+      component: () => import("../views/WishListView.vue"),
+    },
+
+    {
+      path: "/order",
+      name: "order",
+      component: () => import("../views/OrderView.vue"),
+    },
+
+    {
+      path: "/user/orders",
+      name: "orders",
+      component: () => import("../views/OrdersView.vue"),
     },
   ],
 });

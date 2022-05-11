@@ -3,6 +3,8 @@ let ids = [];
 export default function getChildrenIds(list) {
 	ids = [];
 
+	if(!list) return [];
+
 	$_recursiveGetIds(list);
 
 	return ids;

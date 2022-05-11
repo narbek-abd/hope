@@ -5,6 +5,7 @@ import VIcon from "@/components/VIcon.vue";
 import VButton from "@/components/VButton.vue";
 import { apiUrl } from "@/constants/main.js";
 import {useCartStore} from "@/stores/cart"
+import {useWishListStore} from "@/stores/wishList"
 
 const props = defineProps(["product"]);
 
@@ -12,13 +13,17 @@ const alreadyInCart = ref(false);
 const alreadyInWishlist = ref(false);
 
 const cartStore = useCartStore();
+const wishListStore = useWishListStore();
 
 function addToCart() {
 	cartStore.addProduct(props.product.id)
 	alreadyInCart.value = true;
 }
 
-function addToWishlist() {}
+function addToWishlist() {
+	wishListStore.addProduct(props.product.id)
+	alreadyInWishlist.value = true;
+}
 </script>
 
 <template>

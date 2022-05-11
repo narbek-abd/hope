@@ -155,6 +155,9 @@ function defaultSortBy() {
 	.spinner {
 		margin: 30px auto 0 auto;
 	}
+	@media (max-width:992px) {
+		width: 100%;
+	}
 }
 
 .catalog-products__item {

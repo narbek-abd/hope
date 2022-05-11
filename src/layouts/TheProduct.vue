@@ -1,9 +1,12 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watchEffect  } from "vue";
 import { RouterLink } from "vue-router";
 import VButton from "@/components/VButton.vue";
 import VIcon from "@/components/VIcon.vue";
 import ProductGallery from "@/components/ProductGallery.vue";
+import {useCartStore} from "@/stores/cart.js"
+import {useWishListStore} from "@/stores/wishList.js"
+
 
 const props = defineProps({
 	product: {
@@ -12,36 +15,32 @@ const props = defineProps({
 	},
 });
 
-// const cartProducts = useSelector((state: RootState) => state.cart.products);
-// const wishlistProducts = useSelector();
+const cartStore = useCartStore();
+const wishListStore = useWishListStore();
 
 const alreadyInCart = ref(false);
 const alreadyInWishlist = ref(false);
 
-// watchEffect(() => {
-//    cartProducts.forEach((cartProduct) => {
-//      if (cartProduct.id === product.id) {
-//        setAlreadyInCart(true);
-//      }
-//    });
-//  }, [cartProducts]);
+watchEffect(() => {
+	if (cartStore.products.find(cartProduct => cartProduct.id === props.product.id)) {
+		alreadyInCart.value = true;
+	}
+});
 
-//  watchEffect(() => {
-//    wishlistProducts.forEach((wishlistProduct) => {
-//      if (wishlistProduct.id === product.id) {
-//        setAlreadyInWishlist(true);
-//      }
-//    });
-//  }, [wishlistProducts]);
+watchEffect(() => {
+	if (wishListStore.products.find(wishListProduct => wishListProduct.id === props.product.id)) {
+		alreadyInWishlist.value = true;
+	}
+});
 
 function addToCart() {
-	dispatch(addProduct(product));
+	cartStore.addProduct(props.product.id);
 
 	alreadyInCart.value = true;
 }
 
 function addToWishlist() {
-	dispatch(addProductToWishlist(product));
+	wishListStore.addProduct(props.product.id);
 
 	alreadyInWishlist.value = true;
 }

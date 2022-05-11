@@ -1,11 +1,14 @@
 <script setup>
 import VIcon from "@/components/VIcon.vue";
 import VDropdown from "@/components/VDropdown.vue";
+import {RouterLink} from "vue-router"
 import { useUserStore } from "@/stores/user.js";
 import { useCartStore } from "@/stores/cart.js";
+import { useWishListStore } from "@/stores/wishList.js";
 
 const userStore = useUserStore();
 const cartStore = useCartStore();
+const wishListStore = useWishListStore();
 </script>
 
 <template>
@@ -27,40 +30,40 @@ const cartStore = useCartStore();
 				</div>
 				<div class="header__top-right">
 					<div class="header__top-toggle">
-						<routerLink to="#" class="header__top-link">
+						<RouterLink to="/user/wishlist" class="header__top-link">
 							Wishlist <VIcon name="heart" />
 							<div class="header__top-count">
-								<!-- {wishlist.products.length} -->2
+								{{wishListStore.products.length}}
 							</div>
-						</routerLink>
+						</RouterLink>
 					</div>
 
 					<div class="header__top-toggle">
-						<routerLink to="/cart" class="header__top-link">
+						<RouterLink to="/cart" class="header__top-link">
 							<VIcon name="basket" />
 							<div class="header__top-count">
 								{{ cartStore.getTotalQuantity }}
 							</div>
-						</routerLink>
+						</RouterLink>
 					</div>
 
 					<div class="header__top-toggle">
-						<routerLink
+						<RouterLink
 							v-if="!userStore.id"
 							to="/login"
 							class="header__top-link"
 						>
 							Login <VIcon name="user" />
-						</routerLink>
+						</RouterLink>
 
 						<VDropdown v-else position="right">
 							<template #title> Alan </template>
 							<template #default>
 								<li>
-									<routerLink
+									<RouterLink
 										to="/user/orders"
 										class="header__top-link"
-										>My orders</routerLink
+										>My orders</RouterLink
 									>
 								</li>
 								<li @click="userStore.deleteUser()">Logout</li>

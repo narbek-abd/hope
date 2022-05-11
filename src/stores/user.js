@@ -26,13 +26,5 @@ export const useUserStore = defineStore({
       this.name = "";
       this.email = "";
     },
-
-    redirectAuthenticated(user) {
-      watchEffect(() => {
-        if (this.id) {
-          this.$router.push({ name: "home" });
-        }
-      });
-    },
   },
 });

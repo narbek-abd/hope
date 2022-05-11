@@ -1,11 +1,13 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import CatalogMenu from "@/components/CatalogMenu.vue";
 import VIcon from "@/components/VIcon.vue";
 import VClickOutside from "@/directives/VClickOutside.js";
+import { useRoute } from "vue-router";
 import api from "@/api";
 
 const categories = ref([]);
+const route = useRoute();
 const isCatalogMenuVisible = ref(false);
 
 onMounted(async () => {
@@ -21,6 +23,13 @@ function hideCatalogMenu(e) {
 		isCatalogMenuVisible.value = false;
 	}
 }
+
+watch(
+	() => route.path,
+	() => {
+		isCatalogMenuVisible.value = false;
+	}
+);
 </script>
 
 <template>
@@ -74,7 +83,7 @@ function hideCatalogMenu(e) {
 }
 .drop-enter-active,
 .drop-leave-active {
-	transition: all 0.5s ease;
+	transition: all 0.2s ease;
 	z-index: 1;
 }
 
